@@ -11,8 +11,9 @@ begin
     gem.email = "raf.magana@gmail.com"
     gem.homepage = "http://github.com/rafmagana/mush"
     gem.authors = ["Rafael Magaña"]
-    gem.add_development_dependency "shoulda", ">= 0"
-    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
+    gem.add_development_dependency "shoulda", ">= 2.11.3"
+    gem.add_development_dependency "mocha", ">= 2.11.3"
+    gem.add_runtime_dependency('httparty', [">= 0.9.8"])
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError

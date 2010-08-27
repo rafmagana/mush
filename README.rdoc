@@ -6,6 +6,9 @@ NOTE: This gem only supports url shortening, nothing else, no stats, no info, no
 
 == Installation
 
+MUSh depends on HTTParty
+	
+	sudo gem install httparty
     sudo gem install mush
 
 == Supported services
