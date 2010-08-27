@@ -12,8 +12,8 @@ begin
     gem.homepage = "http://github.com/rafmagana/mush"
     gem.authors = ["Rafael Magaña"]
     gem.add_development_dependency "shoulda", ">= 2.11.3"
-    gem.add_development_dependency "mocha", ">= 2.11.3"
-    gem.add_runtime_dependency('httparty', [">= 0.9.8"])
+    gem.add_development_dependency "mocha", ">= 0.9.8"
+    gem.add_runtime_dependency('httparty', [">= 0.6.1"])
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
