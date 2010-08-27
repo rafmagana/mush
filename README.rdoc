@@ -4,6 +4,10 @@ A multiple service URL shortener gem with command-line utilities
 
 NOTE: This gem only supports url shortening, nothing else, no stats, no info, no expand and it won't support any of them.
 
+== Installation
+
+    sudo gem install mush
+
 == Supported services
 
 * bit.ly
