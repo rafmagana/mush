@@ -1,0 +1,40 @@
+#!/usr/bin/env ruby
+
+STDOUT.sync = true
+
+$LOAD_PATH.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
+
+require 'rubygems'
+require 'optparse'
+require 'mush'
+
+ORIGINAL_ARGV = ARGV.dup
+
+#the defaults
+options = {}
+
+opts = OptionParser.new do |opts|
+  opts.banner = <<-EOF
+Usage:
+    unu url
+EOF
+
+  opts.on("-v", "--version", "Print the version number and exit") do
+    options[:version] = true
+  end
+end
+
+opts.parse!
+
+if options[:version]
+  abort("Version " + Mush.version)
+end
+
+options[:url] = ARGV.first if ARGV.length == 1
+
+# validate
+unless options[:url]
+  abort("You must specify a URL to use the u.nu service")
+end
+
+puts Mush::Services::Unu.new.shorten options[:url]
