@@ -10,7 +10,7 @@ module Mush
         
         options = {}
         options[:query] = {:url => url}
-        get('/unu-api-simple', options).body
+        get('/unu-api-simple', options).body.chomp
       end
       
     end

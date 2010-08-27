@@ -10,7 +10,7 @@ module Mush
         
         options = {}
         options[:query] = {:longurl => url}
-        get('/api.php', options).body
+        get('/api.php', options).body.chomp
       end  
 
     end

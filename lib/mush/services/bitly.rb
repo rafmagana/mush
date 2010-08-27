@@ -24,7 +24,7 @@ module Mush
         
         response = get('/shorten', options)
         
-        response["status_code"] == 200 ? response["data"]["url"] : response["status_txt"]
+        response["status_code"] == 200 ? response["data"]["url"].chomp : response["status_txt"]
       end
       
     end
