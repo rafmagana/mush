@@ -1,0 +1,67 @@
+#!/usr/bin/env ruby
+
+STDOUT.sync = true
+
+$LOAD_PATH.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
+
+require 'rubygems'
+require 'optparse'
+require 'mush'
+
+ORIGINAL_ARGV = ARGV.dup
+
+#the defaults
+options = {}
+
+opts = OptionParser.new do |opts|
+  opts.banner = <<-EOF
+Usage:
+    bitly -l login -k apikey -u url
+        
+  Options:
+EOF
+
+  opts.on("-lLOGIN", "--login LOGIN", "The login to access the bit.ly API") do |login|
+    options[:login] = login
+  end
+  
+  opts.on("-kAPIKEY", "--apikey APIKEY", "API Key") do |apikey|
+    options[:apikey] = apikey
+  end
+
+  opts.on("-uURL", "--url URL", "The long URL to be shortened") do |url|
+    options[:url] = url
+  end
+  
+  opts.on("-v", "--version", "Print the version number and exit") do
+    options[:version] = true
+  end  
+end
+
+opts.parse!
+
+if options[:version]
+  abort("Version " + Mush.version)
+end
+
+options[:url] = ARGV.first if ARGV.length == 1
+
+#validate
+unless options[:login]
+  abort("You must specify a login to access the Bit.ly API")
+end
+
+unless options[:apikey]
+  abort("You must specify an API Key to access the Bit.ly API")
+end
+
+unless options[:url]
+  abort("Please provide a valid URL, including http://")
+end
+
+bitly = Mush::Services::Bitly.new
+
+bitly.login = options[:login]
+bitly.apikey = options[:apikey]
+
+puts bitly.shorten options[:url]
