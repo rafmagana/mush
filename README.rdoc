@@ -1,11 +1,61 @@
-= mush
+= MUSh
 
-Description goes here.
+A multiple service URL shortener gem with command-line utilities
+
+NOTE: This gem only supports url shortening, nothing else, no stats, no info, no expand and it won't support any of them.
+
+== Supported services
+
+* bit.ly
+* is.gd
+* u.nu
+
+== Usage as a command line utility
+
+    $ bitly -l login -l apikey -u http://foo.raflabs.com
+
+    $ isgd http://foo.raflabs.com
+
+    $ unu foo.raflabs.com
+
+Sorry, but at this moment, if you want to use the bitly command line without -l and -k do this:
+
+Add the following alias to your ~/.bash_profile or ~/.bashrc
+
+    alias bitly='bitly -l your_login -k your_apikey'
+
+then use it this way (you won't need the -u)
+
+    $ bitly http://google.com
+		
+== Usage as a Gem
+
+    require 'mush'
+
+    bitly = Mush::Services::Bitly.new
+
+    bitly.login = "login"
+    bitly.apikey = "apikey"
+
+    bitly.shorten "http://foo.raflabs.com"
+
+    isgd = Mush::Services::IsGd.new
+    isgd.shorten "http://foo.raflabs.com"
+	
+    unu = Mush::Services:Unu.new
+    unu.shorten "http://foo.raflabs.com"
+
+== ToDo
+
+* Use bitly commmand without -l and -k, save config in home folder (.mush file)
+* Make shorten method to accept multiple URLs
+* add j.mp and maybe other services
+* Cache
 
 == Note on Patches/Pull Requests
  
 * Fork the project.
-* Make your feature addition or bug fix.
+* Make your feature/service addition or bug fix.
 * Add tests for it. This is important so I don't break it in a
   future version unintentionally.
 * Commit, do not mess with rakefile, version, or history.
