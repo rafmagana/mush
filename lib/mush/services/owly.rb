@@ -4,7 +4,7 @@ module Mush
     
   require 'json'
     ## ow.ly
-    # apiKey=I6jj368UlrsrkCKxeLXUU
+    # apiKey=L6jj368UlrsrkCKxeLXUZ
     # longUrl=http%3A%2F%2Fbetaworks.com%2F
     # format=json
     # domain=j.mp
