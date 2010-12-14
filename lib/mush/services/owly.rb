@@ -33,7 +33,6 @@ module Mush
         
         response = get('/shorten', options)
       
-        puts response.code
         response.code == 200 ? response["results"]["shortUrl"] : response["error"]
       end
       
