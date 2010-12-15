@@ -3,11 +3,6 @@ module Mush
   module Services
     
   require 'json'
-    ## ow.ly
-    # apiKey=L6jj368UlrsrkCKxeLXUZ
-    # longUrl=http%3A%2F%2Fbetaworks.com%2F
-    # format=json
-    # domain=j.mp
     class Owly < AuthenticatedService
       
       base_uri 'http://ow.ly/api/1.1/url'
