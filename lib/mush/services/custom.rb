@@ -14,7 +14,7 @@ module Mush
         raise InvalidURI.new("Please provide a valid URI") if url.empty?
         
         options = {}
-        path = @service.gsub(/\{url\}/, url) 
+        path = @service.gsub(/\{\{url\}\}/, url) 
         get(path,options).body.chomp
       end  
 
