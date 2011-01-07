@@ -1,0 +1,58 @@
+#!/usr/bin/env ruby
+
+STDOUT.sync = true
+
+$LOAD_PATH.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
+
+require 'rubygems'
+require 'optparse'
+require 'mush'
+
+ORIGINAL_ARGV = ARGV.dup
+
+#the defaults
+options = {}
+
+opts = OptionParser.new do |opts|
+  opts.banner = <<-EOF
+Usage:
+    owly -k apikey -u url
+
+  Options:
+EOF
+
+  opts.on("-kAPIKEY", "--apikey APIKEY", "API Key") do |apikey|
+    options[:apikey] = apikey
+  end
+
+  opts.on("-uURL", "--url URL", "The long URL to be shortened") do |url|
+    options[:url] = url
+  end
+
+  opts.on("-v", "--version", "Print the version number and exit") do
+    options[:version] = true
+  end
+end
+
+opts.parse!
+
+if options[:version]
+  abort("Version " + Mush.version)
+end
+
+options[:url] = ARGV.first if ARGV.length == 1
+
+#validate
+unless options[:apikey]
+  abort("You must specify an API Key to access the Ow.ly API")
+end
+
+unless options[:url]
+  abort("Please provide a valid URL, including http://")
+end
+
+owly = Mush::Services::Owly.new
+
+owly.apikey = options[:apikey]
+
+puts owly.shorten options[:url]

@@ -1,7 +1,7 @@
 require 'helper'
 
 class TestMush < Test::Unit::TestCase
-  
+
   context "Mush::Service class" do
     should "include HTTParty module" do
       assert Mush::Service.include? HTTParty
@@ -55,6 +55,7 @@ class TestMush < Test::Unit::TestCase
 
       setup do
         @httparty_response = stub('HTTParty::Reponse', :body => @shortened_url)
+        @custom_shortener = 'http://is.gd/api.php?longurl={{url}}'
       end
     
       context "IsGd" do
@@ -67,9 +68,8 @@ class TestMush < Test::Unit::TestCase
       
           assert_equal @shortened_url, isgd_result
         end
-      
       end
-      
+
       context "Unu" do
         should "return a shortened url" do
           Mush::Services::Unu.any_instance.stubs(:get).with(instance_of(String), instance_of(Hash)).returns(@httparty_response)
@@ -80,8 +80,20 @@ class TestMush < Test::Unit::TestCase
           assert_equal @shortened_url, unu_result
         end
       end
+
+      context "Custom" do
+        should "return a shortened url" do
+          Mush::Services::Custom.any_instance.stubs(:get).with(instance_of(String), instance_of(Hash)).returns(@httparty_response)
+
+          custom = Mush::Services::Custom.new
+          custom.set_service @custom_shortener
+          custom_result = custom.shorten(@long_url)
+
+          assert_equal @shortened_url, custom_result
+        end
+      end
     end
-  
+
     context "authorizable" do
       setup do
         @response = @shortened_url
@@ -106,6 +118,26 @@ class TestMush < Test::Unit::TestCase
           
           Mush::Services::Bitly.any_instance.stubs(:get).with(instance_of(String), instance_of(Hash)).returns(httparty_response)
           assert_equal @shortened_url, bitly.shorten(@long_url)
+        end
+      end
+
+      context "Owly" do
+        should "has authentication credentials to return a shortened url" do
+
+          httparty_response = stub('HTTParty::Response', :[] => @shortened_url)
+          owly = Mush::Services::Owly.new
+
+          assert_raise Mush::InvalidAuthorizationData do
+            owly.shorten(@long_url)
+          end
+
+          owly.apikey = "apikey"
+
+          assert_nothing_raised do
+            owly.shorten(@long_url)
+          end
+
+          Mush::Services::Bitly.any_instance.stubs(:get).with(instance_of(String), instance_of(Hash)).returns(httparty_response)
         end
       end
     end
