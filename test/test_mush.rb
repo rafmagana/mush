@@ -137,7 +137,7 @@ class TestMush < Test::Unit::TestCase
             owly.shorten(@long_url)
           end
 
-          Mush::Services::Bitly.any_instance.stubs(:get).with(instance_of(String), instance_of(Hash)).returns(httparty_response)
+          Mush::Services::Owly.any_instance.stubs(:get).with(instance_of(String), instance_of(Hash)).returns(httparty_response)
         end
       end
     end
