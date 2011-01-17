@@ -25,7 +25,7 @@ class TestMush < Test::Unit::TestCase
   context "All Services" do
     setup do
       s = Mush::Services
-      @services = [s::IsGd, s::Bitly, s::Unu]
+      @services = [s::IsGd, s::Bitly]
     end
     
     should "be subclasses of Mush::Service" do
@@ -67,17 +67,6 @@ class TestMush < Test::Unit::TestCase
           isgd_result = isgd.shorten(@long_url)
       
           assert_equal @shortened_url, isgd_result
-        end
-      end
-
-      context "Unu" do
-        should "return a shortened url" do
-          Mush::Services::Unu.any_instance.stubs(:get).with(instance_of(String), instance_of(Hash)).returns(@httparty_response)
-    
-          unu = Mush::Services::Unu.new
-          unu_result = unu.shorten(@long_url)
-    
-          assert_equal @shortened_url, unu_result
         end
       end
 
