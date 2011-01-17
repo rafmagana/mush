@@ -16,14 +16,17 @@ options = {}
 opts = OptionParser.new do |opts|
   opts.banner = <<-EOF
 Usage:
-   custom -s service  url
+   custom -s service -u url
 EOF
 
   opts.on("-v", "--version", "Print the version number and exit") do
     options[:version] = true
   end
-  opts.on("-sService", "--service Service", "The url of the custom shortener to use") do |service|
+  opts.on("-sService", "--service Service", "The url of the custom shortener to use. ie. http://short.en?url={{url}}") do |service|
     options[:service] = service
+  end
+  opts.on("-uURL", "--url URL", "The long URL to be shortened") do |url|
+    options[:url] = url
   end
 end
 
@@ -32,8 +35,6 @@ opts.parse!
 if options[:version]
   abort("Version " + Mush.version)
 end
-
-options[:url] = ARGV.first if ARGV.length == 1
 
 # validate
 unless options[:service]
