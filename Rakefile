@@ -6,8 +6,8 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "mush"
-    gem.summary = %Q{A multiple service URL shortener gem with command-line utility}
-    gem.description = %Q{A gem to shorten URLs using different services, it has one command-line utility for each supported service.}
+    gem.summary = %Q{A multiple service URL shortener gem with command-line utilities}
+    gem.description = %Q{A gem to shorten URLs using different services, it has one command-line utility for each supported service and one for custom shorteners called 'shorten'.}
     gem.email = "raf.magana@gmail.com"
     gem.homepage = "http://github.com/rafmagana/mush"
     gem.authors = ["Rafael Magaña"]
