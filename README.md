@@ -23,7 +23,7 @@ Supported services
 	* bit.ly
 	* is.gd
 
-and thanks to [Noel Dellofano](https://github.com/pinkvelociraptor]) from [ZenDesk](http://www.zendesk.com/)
+and thanks to [Noel Dellofano](https://github.com/pinkvelociraptor) from [ZenDesk](http://www.zendesk.com/)
 
 	* ow.ly
 	* custom service
