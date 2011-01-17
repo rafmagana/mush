@@ -48,13 +48,13 @@ class TestMush < Test::Unit::TestCase
     setup do
       @long_url = "http://www.a_very_long_url.com"
       @shortened_url = "http://is.gd/test"
-      @httparty_response = stub('HTTParty::Reponse', :body => @shortened_url)
+      @httparty_response = stub('HTTParty::Response', :body => @shortened_url)
     end
     
     context "not authorizable" do
 
       setup do
-        @httparty_response = stub('HTTParty::Reponse', :body => @shortened_url)
+        @httparty_response = stub('HTTParty::Response', :body => @shortened_url)
         @custom_shortener = 'http://is.gd/api.php?longurl={{url}}'
       end
     
@@ -112,20 +112,20 @@ class TestMush < Test::Unit::TestCase
 
       context "Owly" do
         should "has authentication credentials to return a shortened url" do
-
+      
           httparty_response = stub('HTTParty::Response', :[] => @shortened_url)
           owly = Mush::Services::Owly.new
-
+      
           assert_raise Mush::InvalidAuthorizationData do
             owly.shorten(@long_url)
           end
-
+      
           owly.apikey = "apikey"
-
+      
           assert_nothing_raised do
             owly.shorten(@long_url)
           end
-
+      
           Mush::Services::Owly.any_instance.stubs(:get).with(instance_of(String), instance_of(Hash)).returns(httparty_response)
         end
       end
