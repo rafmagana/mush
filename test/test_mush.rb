@@ -30,7 +30,7 @@ class TestMush < Test::Unit::TestCase
     
     should "be subclasses of Mush::Service" do
       @services.each do |service|
-        assert Mush::Service, service.superclass
+        assert service < Mush::Service, "#{service} extends Mush::Service"
       end
     end
       
