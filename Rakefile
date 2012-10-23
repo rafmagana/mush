@@ -8,7 +8,7 @@ Jeweler::Tasks.new do |gem|
   gem.description = %Q{A gem to shorten URLs using different services, it has one command-line utility for each supported service and one for custom shorteners called 'shorten'.}
   gem.email = "raf.magana@gmail.com"
   gem.homepage = "http://github.com/rafmagana/mush"
-  gem.authors = ["Rafael Magaña"]
+  gem.authors = ["Rafael Magana"]
 end
 Jeweler::GemcutterTasks.new
 
