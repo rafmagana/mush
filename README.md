@@ -1,4 +1,4 @@
-MUSh
+MUSh [![Build Status](https://travis-ci.org/rafmagana/mush.png)](https://travis-ci.org/rafmagana/mush)
 ====
 
 A multiple service URL shortener gem with command-line utilities
@@ -9,14 +9,14 @@ Installation
 ------------
 
 MUSh depends on [HTTParty](https://github.com/jnunemaker/httparty "HTTParty")
-	
+
 	sudo gem install httparty
     sudo gem install mush
 
 or
-	
+
 	sudo gem install mush --include-dependencies
-	
+
 Supported services
 ------------------
 
@@ -46,7 +46,7 @@ Sorry, but at this moment, if you want to use the <code>bitly</code> or <code>ow
 Add the following alias to your ~/.bash_profile or ~/.bashrc
 
     alias bitly='bitly -l your_login -k your_apikey'
-	
+
 	alias owly='owly -k your_apikey'
 
 then use it this way (you won't need the -u)
@@ -74,7 +74,7 @@ Usage as a Gem
 	custom = Mush::Services::Custom.new
 	custom.set_service = "http://chop.ws/index.php?api=1&return_url_text=1&longUrl={{url}}"
 	custom.shorten 'foo.raflabs.com'
-	
+
 ToDo
 ----
 
@@ -85,7 +85,7 @@ ToDo
 
 Note on Patches/Pull Requests
 -----------------------------
- 
+
 * Fork the project.
 * Make your feature/service addition or bug fix.
 * Add tests for it. This is important so I don't break it in a
