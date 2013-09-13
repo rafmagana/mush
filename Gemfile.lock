@@ -2,17 +2,29 @@ GEM
   remote: http://rubygems.org/
   specs:
     crack (0.1.8)
+    git (1.2.5)
     httparty (0.6.1)
       crack (= 0.1.8)
+    jeweler (1.8.4)
+      bundler (~> 1.0)
+      git (>= 1.2.5)
+      rake
+      rdoc
+    json (1.7.5)
     mocha (0.9.8)
       rake
     rake (0.8.7)
+    rcov (1.0.0)
+    rdoc (3.12)
+      json (~> 1.4)
     shoulda (2.11.3)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  httparty (= 0.6.1)
-  mocha (= 0.9.8)
-  shoulda (= 2.11.3)
+  httparty (>= 0.6.1)
+  jeweler
+  mocha
+  rcov
+  shoulda

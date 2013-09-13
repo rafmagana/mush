@@ -1,8 +1,10 @@
-source "http://rubygems.org"
+source :rubygems
 
-gem "httparty", "0.6.1"
+gem "httparty", ">= 0.6.1"
 
 group :development do
-	gem "mocha", "0.9.8"
-	gem "shoulda", "2.11.3"
+  gem "mocha"
+  gem "shoulda"
+  gem "jeweler"
+  gem "rcov", :platform => :ruby_18
 end
