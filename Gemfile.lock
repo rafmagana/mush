@@ -3,6 +3,7 @@ GEM
   specs:
     addressable (2.3.5)
     builder (3.2.2)
+    bump (0.4.2)
     faraday (0.8.8)
       multipart-post (~> 1.2.0)
     git (1.2.6)
@@ -58,6 +59,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bump
   httparty (>= 0.6.1)
   jeweler
   minitest

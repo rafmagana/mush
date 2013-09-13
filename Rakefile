@@ -1,5 +1,6 @@
 # -*- encoding: utf-8 -*-
 require 'bundler/setup'
+require 'bump/tasks'
 
 require 'jeweler'
 Jeweler::Tasks.new do |gem|

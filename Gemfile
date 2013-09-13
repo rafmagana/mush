@@ -3,6 +3,7 @@ source "https://rubygems.org"
 gem "httparty", ">= 0.6.1"
 
 group :development do
+  gem "bump"
   gem "mocha"
   gem "minitest"
   gem "minitest-colorize"
