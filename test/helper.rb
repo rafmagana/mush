@@ -1,11 +1,7 @@
-require 'rubygems'
-require 'test/unit'
-require 'mocha'
-require 'shoulda'
+require 'bundler/setup'
+require 'minitest/autorun'
+require 'minitest/colorize'
+require 'mocha/setup'
 
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
-$LOAD_PATH.unshift(File.dirname(__FILE__))
 require 'mush'
-
-class Test::Unit::TestCase
-end
