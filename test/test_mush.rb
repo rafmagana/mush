@@ -19,6 +19,10 @@ describe Mush do
     it "add an instance method called 'get' that wrappes the HTTParty#get method" do
       assert Mush::Service.new.respond_to? :get
     end
+
+    it "add an instance method called 'post' that wrappes the HTTParty#get method" do
+      assert Mush::Service.new.respond_to? :post
+    end
   end
 
   describe "All Services" do
