@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.date = "2013-09-13"
   s.description = "A gem to shorten URLs using different services, it has one command-line utility for each supported service and one for custom shorteners called 'shorten'."
   s.email = "raf.magana@gmail.com"
-  s.executables = ["bitly", "isgd", "mush", "owly", "shorten"]
+  s.executables = ["bitly", "isgd", "mush", "owly", "zaebz", "shorten"]
   s.extra_rdoc_files = [
     "LICENSE",
     "README.md"
@@ -30,6 +30,7 @@ Gem::Specification.new do |s|
     "bin/isgd",
     "bin/mush",
     "bin/owly",
+    "bin/zaebz",
     "bin/shorten",
     "lib/mush.rb",
     "lib/mush/authenticated_service.rb",

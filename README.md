@@ -23,10 +23,14 @@ Supported services
 	* bit.ly
 	* is.gd
 
-and thanks to [Noel Dellofano](https://github.com/pinkvelociraptor) from [ZenDesk](http://www.zendesk.com/)
+and thanks to [Noel Dellofano](https://github.com/pinkvelociraptor) from [ZenDesk](http://www.zendesk.com/):
 
 	* ow.ly
 	* custom service
+
+and thanks to [Alex Rodionov](https://github.com/p0deje):
+
+  * zae.bz
 
 Usage as a command line utility
 -------------------------------
@@ -36,6 +40,8 @@ Usage as a command line utility
     $ isgd http://foo.raflabs.com
 
     $ owly -k apikey -u foo.raflabs.com
+
+    $ zaebz http://foo.raflabs.com/
 
 	$ shorten -s "http://chop.ws/index.php?api=1&return_url_text=1&longUrl={{url}}" -u foo.raflabs.com
 
